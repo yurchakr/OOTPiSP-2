@@ -1,0 +1,19 @@
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\OOTPiSP №2.exe.config
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\OOTPiSP №2.exe
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\OOTPiSP №2.pdb
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP №2.csprojAssemblyReference.cache
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.frmLogin.resources
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.Properties.Resources.resources
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP №2.csproj.GenerateResource.cache
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP №2.csproj.CoreCompileInputs.cache
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP №2.exe
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP №2.pdb
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\EntityFramework.dll
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\EntityFramework.xml
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP №2.csproj.CopyComplete
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.frmMain.resources
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.frmAdmin.resources
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.frmAircraft.resources
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.frmOrder.resources
