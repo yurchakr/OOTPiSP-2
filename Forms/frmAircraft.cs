@@ -56,5 +56,44 @@ namespace OOTPiSP__2
         {
             tbEngPwr.SelectAll();
         }
+
+        private KeyPressEventArgs CheckForKey(KeyPressEventArgs kpea)
+        {
+            if (!(((Convert.ToChar("0") <= kpea.KeyChar) && (Convert.ToChar("9") >= kpea.KeyChar)) || ((char)Keys.Back == kpea.KeyChar)))
+            {
+                kpea.Handled = true;
+            }
+            return kpea;
+        }
+
+        private void tbMaxSp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e = CheckForKey(e);
+        }
+
+        private void tbFlDist_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e = CheckForKey(e);
+        }
+
+        private void tbRotDiam_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e = CheckForKey(e);
+        }
+
+        private void tbWingspan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e = CheckForKey(e);
+        }
+
+        private void tbEngPwr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e = CheckForKey(e);
+        }
+
+        private void tbLoadCap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e = CheckForKey(e);
+        }
     }
 }

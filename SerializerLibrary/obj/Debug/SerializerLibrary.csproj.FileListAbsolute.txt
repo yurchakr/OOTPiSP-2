@@ -1,0 +1,7 @@
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\SerializerLibrary.dll
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\SerializerLibrary.pdb
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\obj\Debug\SerializerLibrary.csprojAssemblyReference.cache
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\obj\Debug\SerializerLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\obj\Debug\SerializerLibrary.csproj.CopyComplete
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\obj\Debug\SerializerLibrary.dll
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\obj\Debug\SerializerLibrary.pdb

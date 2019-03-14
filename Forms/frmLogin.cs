@@ -63,5 +63,17 @@ namespace OOTPiSP__2
             pLogin.Height = 270;
         }
 
+        private void tbPass_TextChanged(object sender, EventArgs e)
+        {
+            if (tbPass.Text != "" && tbPass.Text != "Введите ваш пароль")
+            {
+                tbPass.PasswordChar = '*';
+            }
+            else
+            {
+                tbPass.Text = "Введите ваш пароль";
+                tbPass.PasswordChar = '\0';
+            }
+        }
     }
 }

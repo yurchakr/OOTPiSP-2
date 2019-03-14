@@ -126,6 +126,7 @@
             this.tbPass.Size = new System.Drawing.Size(399, 31);
             this.tbPass.TabIndex = 2;
             this.tbPass.Text = "Введите ваш пароль";
+            this.tbPass.TextChanged += new System.EventHandler(this.tbPass_TextChanged);
             this.tbPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbPass_MouseDown);
             // 
             // tbUserName

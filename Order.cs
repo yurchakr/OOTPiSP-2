@@ -17,7 +17,7 @@ namespace OOTPiSP__2
 
         public string GetOrderInfo(Aircraft aircraft)
         {
-            return User.Profile.Name + " have an order of " + Aircraft.Name + " for " + OnWhen.Date.ToString();
+            return string.Format("{0} have an order of {1} for {2}", User.Profile.Name, Aircraft.Name, OnWhen.Date.ToString());
         }
     }
 }

@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOTPiSP №2", "OOTPiSP №2.csproj", "{2ACC1229-3B94-4C84-BA82-1DA09A8693EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializerInterface", "SerializerInterface\SerializerInterface.csproj", "{691A7C00-FCA2-47D7-8D2F-EE3B9E091019}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializerLibrary", "SerializerLibrary\SerializerLibrary.csproj", "{C4319F87-691F-4215-9FFD-F57DECE99E10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{2ACC1229-3B94-4C84-BA82-1DA09A8693EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ACC1229-3B94-4C84-BA82-1DA09A8693EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ACC1229-3B94-4C84-BA82-1DA09A8693EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{691A7C00-FCA2-47D7-8D2F-EE3B9E091019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{691A7C00-FCA2-47D7-8D2F-EE3B9E091019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{691A7C00-FCA2-47D7-8D2F-EE3B9E091019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{691A7C00-FCA2-47D7-8D2F-EE3B9E091019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4319F87-691F-4215-9FFD-F57DECE99E10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4319F87-691F-4215-9FFD-F57DECE99E10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4319F87-691F-4215-9FFD-F57DECE99E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4319F87-691F-4215-9FFD-F57DECE99E10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

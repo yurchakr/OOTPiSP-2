@@ -108,6 +108,7 @@
             this.tbMaxSp.Size = new System.Drawing.Size(518, 31);
             this.tbMaxSp.TabIndex = 17;
             this.tbMaxSp.Text = "Введите максимальную скорость, км/ч";
+            this.tbMaxSp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMaxSp_KeyPress);
             this.tbMaxSp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbMaxSp_MouseDown);
             // 
             // tbFlDist
@@ -119,6 +120,7 @@
             this.tbFlDist.Size = new System.Drawing.Size(518, 31);
             this.tbFlDist.TabIndex = 18;
             this.tbFlDist.Text = "Введите максимальную дистанцию полета, км";
+            this.tbFlDist.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbFlDist_KeyPress);
             this.tbFlDist.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbFlDist_MouseDown);
             // 
             // tbLoadCap
@@ -131,6 +133,7 @@
             this.tbLoadCap.TabIndex = 19;
             this.tbLoadCap.Text = "Введите грузоподъемность";
             this.tbLoadCap.Visible = false;
+            this.tbLoadCap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLoadCap_KeyPress);
             this.tbLoadCap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbLoadCap_MouseDown);
             // 
             // tbRotDiam
@@ -143,6 +146,7 @@
             this.tbRotDiam.TabIndex = 20;
             this.tbRotDiam.Text = "Введите диаметр винта, м";
             this.tbRotDiam.Visible = false;
+            this.tbRotDiam.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRotDiam_KeyPress);
             this.tbRotDiam.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbRotDiam_MouseDown);
             // 
             // tbEngPwr
@@ -155,6 +159,7 @@
             this.tbEngPwr.TabIndex = 21;
             this.tbEngPwr.Text = "Введите мощность двигателя";
             this.tbEngPwr.Visible = false;
+            this.tbEngPwr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEngPwr_KeyPress);
             this.tbEngPwr.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbEngPwr_MouseDown);
             // 
             // tbWingspan
@@ -167,6 +172,7 @@
             this.tbWingspan.TabIndex = 22;
             this.tbWingspan.Text = "Введите размах крыльев, м";
             this.tbWingspan.Visible = false;
+            this.tbWingspan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbWingspan_KeyPress);
             this.tbWingspan.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbWingspan_MouseDown);
             // 
             // frmAircraft

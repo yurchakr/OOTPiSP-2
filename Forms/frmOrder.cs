@@ -21,5 +21,13 @@ namespace OOTPiSP__2
         {
             tbFlDur.SelectAll();
         }
+
+        private void tbFlDur_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(((Convert.ToChar("0") <= e.KeyChar) && (Convert.ToChar("9") >= e.KeyChar)) || ((char)Keys.Back == e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -155,6 +155,7 @@
             this.tbFlDur.Size = new System.Drawing.Size(518, 31);
             this.tbFlDur.TabIndex = 19;
             this.tbFlDur.Text = "Введите продолжительность полета, мин";
+            this.tbFlDur.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbFlDur_KeyPress);
             this.tbFlDur.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbFlDur_MouseDown);
             // 
             // dtpWhen

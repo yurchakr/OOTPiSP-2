@@ -10,7 +10,8 @@ namespace OOTPiSP__2
     {
         public int Id { get; set; }
         public string UserName { get; set; }
-        public string Password { get; set; }
+        public byte[] Key { get; set; }
+        public byte[] Salt { get; set; }
         public UserProfile Profile { get; set; }
     }
 }

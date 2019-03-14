@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
+using System.Security.Cryptography;
 
 namespace OOTPiSP__2
 {
@@ -30,8 +31,12 @@ namespace OOTPiSP__2
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            authUsr = Authentification();
-
+            if ((authUsr = Authentification()) == null)
+            {
+                Close();
+                return;
+            }
+             
             if (authUsr.UserName == "Admin")
             {
                 frmAdmin admFrm = new frmAdmin();
@@ -45,19 +50,44 @@ namespace OOTPiSP__2
             }
         }
 
+        private User HashPassword(User user, string password)
+        {
+            using (var deriveBytes = new Rfc2898DeriveBytes(password, 20))
+            {
+                user.Salt = deriveBytes.Salt;
+                user.Key = deriveBytes.GetBytes(20);
+            }
+                return user;
+        }
+
+        private bool CheckPassword(byte[] key, byte[] salt, string password)
+        {
+            using (var deriveBytes = new Rfc2898DeriveBytes(password, salt))
+            {
+                byte[] newKey = deriveBytes.GetBytes(20);
+
+                if (newKey.SequenceEqual(key))
+                    return true;
+                else
+                    return false;
+            }
+        }
+
         private User Authentification()
         {
             frmLogin logFrm = new frmLogin();
-            DialogResult dlgres = logFrm.ShowDialog(this);
+            DialogResult dlgres = logFrm.ShowDialog(this);            
 
             if (dlgres == DialogResult.Cancel)
-                Close();
+            {
+                return null;
+            }
 
             if (dlgres == DialogResult.OK)
             {
                 User usr = new User();
                 usr.UserName = logFrm.tbUserName.Text;
-                usr.Password = logFrm.tbPass.Text;
+                usr = HashPassword(usr, logFrm.tbPass.Text);
 
                 UserProfile usrPrfl = new UserProfile();
                 usrPrfl.Mail = logFrm.tbMail.Text;
@@ -75,14 +105,14 @@ namespace OOTPiSP__2
                     .Where(user => user.UserName == logFrm.tbUserName.Text)
                     .FirstOrDefault();
 
-            if ((usrFind == null) || (usrFind.Password != logFrm.tbPass.Text))
+            if ((usrFind == null) || (!CheckPassword(usrFind.Key, usrFind.Salt, logFrm.tbPass.Text)))
             {
                 logFrm.tbUserName.Text = "Input your username";
                 logFrm.tbPass.Text = "Input your password";
                 logFrm.tbName.Text = "Input your name";
                 logFrm.tbMail.Text = "Input your mail";
 
-                Authentification();
+                usrFind = Authentification();
             }
 
             return usrFind;
@@ -91,16 +121,6 @@ namespace OOTPiSP__2
 
         private void LoadHelicopters(DataGridView dgv)
         {
-            dgv.Columns.Clear();
-
-            dgv.Columns.Add("Number", "№");
-            dgv.Columns.Add("Name", "Название");
-            dgv.Columns.Add("TailNumber", "Бортовой номер");
-            dgv.Columns.Add("MaxSpeed", "Максимальная скорость, км/ч");
-            dgv.Columns.Add("MaxFlightDistance", "Максимальная дистанция полета, км");
-            dgv.Columns.Add("RotorDiameter", "Диаметр винта, м");
-            dgv.Columns.Add("EnginePower", "Мощность двигателя, л.с.");
-
             List<Helicopter> Helicopters = db.Helicopters.Local.ToList();
             foreach (Helicopter helic in Helicopters)
             {
@@ -118,15 +138,6 @@ namespace OOTPiSP__2
 
         private void LoadAirplanes(DataGridView dgv)
         {
-            dgv.Columns.Clear();
-
-            dgv.Columns.Add("Number", "№");
-            dgv.Columns.Add("Name", "Название");
-            dgv.Columns.Add("TailNumber", "Бортовой номер");
-            dgv.Columns.Add("MaxSpeed", "Максимальная скорость, км/ч");
-            dgv.Columns.Add("MaxFlightDistance", "Максимальная дистанция полета, км");
-            dgv.Columns.Add("Wingspan", "Размах крыльев, м");
-
             List<Airplane> Airplanes = db.Airplanes.Local.ToList();
             foreach (Airplane airPln in Airplanes)
             {
@@ -143,16 +154,6 @@ namespace OOTPiSP__2
 
         private void LoadPlanes(DataGridView dgv)
         {
-            dgv.Columns.Clear();
-
-            dgv.Columns.Add("Number", "№");
-            dgv.Columns.Add("Name", "Название");
-            dgv.Columns.Add("TailNumber", "Бортовой номер");
-            dgv.Columns.Add("MaxSpeed", "Максимальная скорость, км/ч");
-            dgv.Columns.Add("MaxFlightDistance", "Максимальная дистанция полета, км");
-            dgv.Columns.Add("Wingspan", "Размах крыльев, м");
-            dgv.Columns.Add("EnginePower", "Мощность двигателя, л.с.");
-
             List<Plane> Planes = db.Planes.Local.ToList();
             foreach (Plane pln in Planes)
             {
@@ -170,16 +171,6 @@ namespace OOTPiSP__2
 
         private void LoadGliders(DataGridView dgv)
         {
-            dgv.Columns.Clear();
-
-            dgv.Columns.Add("Number", "№");
-            dgv.Columns.Add("Name", "Название");
-            dgv.Columns.Add("TailNumber", "Бортовой номер");
-            dgv.Columns.Add("MaxSpeed", "Максимальная скорость, км/ч");
-            dgv.Columns.Add("MaxFlightDistance", "Максимальная дистанция полета, км");
-            dgv.Columns.Add("Wingspan", "Размах крыльев, м");
-            dgv.Columns.Add("LoadCapacity", "Грузоподъемность, кг");
-
             List<Glider> Gliders = db.Gliders.Local.ToList();
             foreach (Glider gldr in Gliders)
             {
@@ -195,6 +186,42 @@ namespace OOTPiSP__2
             }
         }
 
+        private void LoadHeaders(DataGridView dgv, string aircraftType)
+        {
+            dgv.Columns.Add("Number", "№");
+            dgv.Columns.Add("Name", "Название");
+            dgv.Columns.Add("TailNumber", "Бортовой номер");
+            dgv.Columns.Add("MaxSpeed", "Максимальная скорость, км/ч");
+            dgv.Columns.Add("MaxFlightDistance", "Максимальная дистанция полета, км");
+            if (aircraftType == "Вертолет")
+            {
+                dgv.Columns.Add("RotorDiameter", "Диаметр винта, м");
+                dgv.Columns.Add("EnginePower", "Мощность двигателя, л.с.");
+                LoadHelicopters(dgv);
+                return;
+            }
+            if (aircraftType == "Аэроплан")
+            {
+                dgv.Columns.Add("RotorDiameter", "Диаметр винта, м");
+                dgv.Columns.Add("EnginePower", "Мощность двигателя, л.с.");
+                LoadAirplanes(dgv);
+                return;
+            }
+            if (aircraftType == "Самолет")
+            {
+                dgv.Columns.Add("Wingspan", "Размах крыльев, м");
+                dgv.Columns.Add("EnginePower", "Мощность двигателя, л.с.");
+                LoadPlanes(dgv);
+                return;
+            }
+            if (aircraftType == "Планер")
+            {
+                dgv.Columns.Add("Wingspan", "Размах крыльев, м");
+                dgv.Columns.Add("LoadCapacity", "Грузоподъемность, кг");
+                LoadGliders(dgv);
+            }
+        }
+
         private void FillTheCB(ComboBox cb)
         {
             cb.Items.Add("Вертолет");
@@ -205,26 +232,8 @@ namespace OOTPiSP__2
 
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbType.SelectedIndex == -1)
-            {
-                dgvMain.Columns.Clear();
-            }
-            if (cbType.SelectedIndex == 0)
-            {
-                LoadHelicopters(dgvMain);
-            }
-            if (cbType.SelectedIndex == 1)
-            {
-                LoadAirplanes(dgvMain);
-            }
-            if (cbType.SelectedIndex == 2)
-            {
-                LoadPlanes(dgvMain);
-            }
-            if (cbType.SelectedIndex == 3)
-            {
-                LoadGliders(dgvMain);
-            }
+            dgvMain.Columns.Clear();
+            LoadHeaders(dgvMain, cbType.SelectedItem.ToString());
         }
 
         private void bOrder_Click(object sender, EventArgs e)
@@ -235,41 +244,9 @@ namespace OOTPiSP__2
 
                 int index = dgvMain.SelectedRows[0].Index;
                 string Name = dgvMain[1, index].Value.ToString();
-                Aircraft aircrft = new Aircraft();
-
-
-                if (cbType.SelectedIndex == 0)
-                {
-                    Helicopter helic = db.Helicopters
-                    .Where(helicop => helicop.Name == Name)
+                Aircraft aircrft = db.Aircrafts
+                    .Where(aircraft => aircraft.Name == Name)
                     .FirstOrDefault();
-
-                    aircrft = helic;
-                }
-                if (cbType.SelectedIndex == 1)
-                {
-                    Airplane airPln = db.Airplanes
-                    .Where(airPlne => airPlne.Name == Name)
-                    .FirstOrDefault();
-
-                    aircrft = airPln;
-                }
-                if (cbType.SelectedIndex == 2)
-                {
-                    Plane pln = db.Planes
-                    .Where(plne => plne.Name == Name)
-                    .FirstOrDefault();
-
-                    aircrft = pln;
-                }
-                if (cbType.SelectedIndex == 3)
-                {
-                    Glider gldr = db.Gliders
-                    .Where(glder => glder.Name == Name)
-                    .FirstOrDefault();
-
-                    aircrft = gldr;
-                }
 
                 ordrFrm.tbName.Text = authUsr.Profile.Name;
                 ordrFrm.tbMail.Text = authUsr.Profile.Mail;

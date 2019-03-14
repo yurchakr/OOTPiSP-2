@@ -15,6 +15,7 @@ namespace OOTPiSP__2
         public DbSet<Glider> Gliders { get; set; }
         public DbSet<Helicopter> Helicopters { get; set; }
         public DbSet<Plane> Planes { get; set; }
+        public DbSet<Aircraft> Aircrafts { get; set; }
         public DbSet<Order> Orders { get; set; }
 
         public OrderContext()
