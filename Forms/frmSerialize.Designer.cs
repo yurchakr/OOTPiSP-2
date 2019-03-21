@@ -1,6 +1,6 @@
 ﻿namespace OOTPiSP__2.Forms
 {
-    partial class frmSerialize
+    partial class frmProcessFile
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             this.rbDAT = new System.Windows.Forms.RadioButton();
             this.rbXML = new System.Windows.Forms.RadioButton();
             this.rbJSON = new System.Windows.Forms.RadioButton();
-            this.rbTXT = new System.Windows.Forms.RadioButton();
+            this.rbSOAP = new System.Windows.Forms.RadioButton();
             this.gbSerialType = new System.Windows.Forms.GroupBox();
             this.gbSerialType.SuspendLayout();
             this.SuspendLayout();
@@ -99,21 +99,21 @@
             this.rbJSON.Text = "JSON";
             this.rbJSON.UseVisualStyleBackColor = true;
             // 
-            // rbTXT
+            // rbSOAP
             // 
-            this.rbTXT.AutoSize = true;
-            this.rbTXT.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.rbTXT.Location = new System.Drawing.Point(10, 206);
-            this.rbTXT.Name = "rbTXT";
-            this.rbTXT.Size = new System.Drawing.Size(70, 29);
-            this.rbTXT.TabIndex = 3;
-            this.rbTXT.Text = "TXT";
-            this.rbTXT.UseVisualStyleBackColor = true;
+            this.rbSOAP.AutoSize = true;
+            this.rbSOAP.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.rbSOAP.Location = new System.Drawing.Point(10, 206);
+            this.rbSOAP.Name = "rbSOAP";
+            this.rbSOAP.Size = new System.Drawing.Size(87, 29);
+            this.rbSOAP.TabIndex = 3;
+            this.rbSOAP.Text = "SOAP";
+            this.rbSOAP.UseVisualStyleBackColor = true;
             // 
             // gbSerialType
             // 
             this.gbSerialType.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.gbSerialType.Controls.Add(this.rbTXT);
+            this.gbSerialType.Controls.Add(this.rbSOAP);
             this.gbSerialType.Controls.Add(this.rbJSON);
             this.gbSerialType.Controls.Add(this.rbXML);
             this.gbSerialType.Controls.Add(this.rbDAT);
@@ -125,16 +125,16 @@
             this.gbSerialType.TabStop = false;
             this.gbSerialType.Text = "Выберите расширение файла..";
             // 
-            // frmSerialize
+            // frmProcessFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(342, 342);
+            this.ClientSize = new System.Drawing.Size(337, 346);
             this.Controls.Add(this.gbSerialType);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.bOk);
-            this.Name = "frmSerialize";
+            this.Name = "frmProcessFile";
             this.Load += new System.EventHandler(this.frmSerialize_Load);
             this.gbSerialType.ResumeLayout(false);
             this.gbSerialType.PerformLayout();
@@ -149,7 +149,7 @@
         private System.Windows.Forms.RadioButton rbDAT;
         private System.Windows.Forms.RadioButton rbXML;
         private System.Windows.Forms.RadioButton rbJSON;
-        private System.Windows.Forms.RadioButton rbTXT;
+        private System.Windows.Forms.RadioButton rbSOAP;
         private System.Windows.Forms.GroupBox gbSerialType;
     }
 }

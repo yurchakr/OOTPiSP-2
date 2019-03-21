@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace OOTPiSP__2.Forms
 {
-    public partial class frmSerialize : Form
+    public partial class frmProcessFile : Form
     {
         public string TypeSerialization
         {
@@ -20,7 +20,7 @@ namespace OOTPiSP__2.Forms
             }
         }
 
-        public frmSerialize()
+        public frmProcessFile()
         {
             InitializeComponent();
         }

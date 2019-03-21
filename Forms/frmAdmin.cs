@@ -12,7 +12,11 @@ using System.Data.Entity;
 using System.Reflection;
 using System.IO;
 using SerializerInterface;
+using SerializerLibrary;
 using OOTPiSP__2.Forms;
+using System.Runtime.Serialization.Formatters.Soap;
+using System.Text.RegularExpressions;
+using System.IO.Compression;
 
 namespace OOTPiSP__2
 {
@@ -251,17 +255,33 @@ namespace OOTPiSP__2
 
         private void LoadAirplanes(DataGridView dgv)
         {
-            List<Airplane> Airplanes = db.Airplanes.Local.ToList();
+            List<Airplane> Airplanes = db.Airplanes.ToList();
+            List<Glider> Gliders = db.Gliders.ToList();
+            List<Plane> Planes = db.Planes.ToList();
+
             foreach (Airplane airPln in Airplanes)
             {
-                    dgv.Rows.Add();
-                    int row = dgv.RowCount - 1;
-                    dgv[0, row].Value = row + 1;
-                    dgv[1, row].Value = airPln.Name;
-                    dgv[2, row].Value = airPln.TailNumber;
-                    dgv[3, row].Value = airPln.MaxSpeed;
-                    dgv[4, row].Value = airPln.MaxFlightDistance;
-                    dgv[5, row].Value = airPln.Wingspan;
+                foreach (Glider gldr in Gliders)
+                {
+                    if (gldr.Name != airPln.Name)
+                    {
+                        foreach (Plane pln in Planes)
+                        {
+                            if (pln.Name != airPln.Name)
+                            {
+                                dgv.Rows.Add();
+                                int row = dgv.RowCount - 1;
+                                dgv[0, row].Value = row + 1;
+                                dgv[1, row].Value = airPln.Name;
+                                dgv[2, row].Value = airPln.TailNumber;
+                                dgv[3, row].Value = airPln.MaxSpeed;
+                                dgv[4, row].Value = airPln.MaxFlightDistance;
+                                dgv[5, row].Value = airPln.Wingspan;
+                            }
+                        }
+                    }
+                }
+                    
             }
         }
 
@@ -385,7 +405,7 @@ namespace OOTPiSP__2
         private void mSaveAs_Click(object sender, EventArgs e)
         {
             aircraft = new AircraftType { Aircrafts = db.Aircrafts.Local.ToList() };
-            frmSerialize serializeFrm = new frmSerialize();
+            frmProcessFile serializeFrm = new frmProcessFile();
             if (serializeFrm.ShowDialog() == DialogResult.OK)
             {
                 SaveFileDialog saveFile = InitializeSaveFile(serializeFrm.TypeSerialization.ToLower());
@@ -393,8 +413,11 @@ namespace OOTPiSP__2
                 {
                     if (serializeFrm.TypeSerialization.ToLower() == "txt")
                     {
-
                         SaveTXT(saveFile, aircraft);
+                    }
+                    else if (serializeFrm.TypeSerialization.ToLower() == "soap")
+                    {
+                        SaveSOAP(saveFile, aircraft.Aircrafts.ToArray());
                     }
                     else
                         SaveOpenFile<ISerilizable>(serializeFrm.TypeSerialization, true, saveFile, null, aircraft);
@@ -438,11 +461,11 @@ namespace OOTPiSP__2
 
         private void mOpenFrom_Click(object sender, EventArgs e)
         {
-            frmSerialize serializeFrm = new frmSerialize();
+            frmProcessFile serializeFrm = new frmProcessFile();
             if (serializeFrm.ShowDialog() == DialogResult.OK)
             {
                 cbType.SelectedIndex = -1;
-                OpenFileDialog openFile = InitializeOpenFile(serializeFrm.TypeSerialization.ToLower());
+                OpenFileDialog openFile = InitializeOpenFile("zip");
                 if (openFile.ShowDialog(this) == DialogResult.OK)
                 {
                     try
@@ -451,14 +474,18 @@ namespace OOTPiSP__2
                         {
                             OpenTXT(openFile);
                         }
+                        else if (serializeFrm.TypeSerialization.ToLower() == "soap")
+                        {
+                            aircraft.Aircrafts = OpenSOAP(openFile).ToList();
+                        }
                         else
                         {
-                            aircraft = SaveOpenFile<ISerilizable>(serializeFrm.TypeSerialization, false, null, openFile, null);
-                            db.Aircrafts.RemoveRange(db.Aircrafts);
-                            db.Aircrafts.AddRange(aircraft.Aircrafts);
-                            db.SaveChanges();
+                            aircraft = SaveOpenFile<ISerilizable>(serializeFrm.TypeSerialization, false, null, openFile, null);          
                         }
-                            
+                        db.Aircrafts.RemoveRange(db.Aircrafts);
+                        db.Aircrafts.AddRange(aircraft.Aircrafts);
+                        db.SaveChanges();
+
                     }
                     catch (Exception)
                     {
@@ -466,6 +493,50 @@ namespace OOTPiSP__2
                     }
                 }
             }
+        }
+
+        private void SaveSOAP(SaveFileDialog saveFile, Aircraft[] aircrafts)
+        {
+            using (FileStream fs = new FileStream(saveFile.FileName, FileMode.Create))
+            {
+                SoapFormatter formatter = new SoapFormatter();
+                formatter.Serialize(fs, aircrafts);
+            }
+
+            string encrFile = Path.GetFileNameWithoutExtension(saveFile.FileName);
+            encrFile = Regex.Replace(saveFile.FileName, encrFile, encrFile + "_encr");
+
+            Encrypt.EncryptFile(saveFile.FileName, encrFile);
+
+            Archive.SaveArchive(encrFile, encrFile, "soap");
+        }
+
+        private Aircraft[] OpenSOAP(OpenFileDialog archive)
+        {
+            Archive.Unarchive(archive, "soap");
+
+            string encrFile = Regex.Replace(archive.FileName, "zip", "soap");
+            string decrFile = Regex.Replace(encrFile, "_encr", "_decr");
+            Encrypt.DecryptFile(encrFile, decrFile);
+
+            OpenFileDialog openFile = InitializeOpenFile("soap");
+
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                using (var fs = new FileStream(openFile.FileName, FileMode.Open))
+                {
+                    SoapFormatter formatter = new SoapFormatter();
+                    try
+                    {
+                        return (Aircraft[])formatter.Deserialize(fs); ;
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+            }
+            return null;
         }
 
         private void SaveTXT(SaveFileDialog saveFile, AircraftType aircraftType)

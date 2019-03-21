@@ -17,6 +17,6 @@ C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.frmAircraft.resources
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.frmOrder.resources
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.frmAdmin.resources
-C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.Forms.frmSerialize.resources
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\SerializerInterface.pdb
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\SerializerLibrary.pdb
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\obj\Debug\OOTPiSP__2.Forms.frmProcessFile.resources

@@ -5,3 +5,7 @@ C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\Serialize
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\obj\Debug\SerializerLibrary.csproj.CopyComplete
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\obj\Debug\SerializerLibrary.dll
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\obj\Debug\SerializerLibrary.pdb
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\bin\Debug\SerializerLibrary.dll
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\bin\Debug\SerializerLibrary.pdb
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\bin\Debug\SerializerInterface.dll
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerLibrary\bin\Debug\SerializerInterface.pdb

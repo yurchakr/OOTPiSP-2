@@ -1,6 +1,6 @@
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\SerializerInterface.dll
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\bin\Debug\SerializerInterface.pdb
-C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerInterface\obj\Debug\SerializerInterface.csprojAssemblyReference.cache
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerInterface\obj\Debug\SerializerInterface.csproj.CoreCompileInputs.cache
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerInterface\obj\Debug\SerializerInterface.dll
 C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerInterface\obj\Debug\SerializerInterface.pdb
+C:\Users\Aleksey\Desktop\универ\4 сем\OOTPiSP\#2\OOTPiSP №2\SerializerInterface\obj\Debug\SerializerInterface.csprojAssemblyReference.cache
